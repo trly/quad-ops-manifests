@@ -1,0 +1,18 @@
+name: whoami
+type: container
+
+systemd:
+  description: Traefik Whoami Demo Container
+  after:
+    - network-online.target
+  restart_policy: always
+
+config:
+  Image: ghcr.io/traefik/whoami:latest
+  PublishPort: 80:80
+  Environment:
+    - WHOAMI_NAME=quadlet-demo
+  Labels:
+    - app=whoami
+    - environment=demo
+
