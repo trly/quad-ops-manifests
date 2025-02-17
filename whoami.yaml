@@ -8,7 +8,7 @@ systemd:
   restart_policy: always
 
 config:
-  Image: ghcr.io/traefik/whoami:latest
+  Image: docker.io/traefik/whoami:latest
   PublishPort: 80:80
   Environment:
     - WHOAMI_NAME=quadlet-demo
