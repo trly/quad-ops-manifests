@@ -1,18 +1,9 @@
 name: whoami
 type: container
-
-systemd:
-  description: Traefik Whoami Demo Container
-  after:
-    - network-online.target
-  restart_policy: always
-
-config:
-  Image: docker.io/traefik/whoami:latest
-  PublishPort: 80:80
-  Environment:
-    - WHOAMI_NAME=quadlet-demo
-  Labels:
-    - app=whoami
-    - environment=demo
-
+container:
+  image: docker.io/traefik/whoami:latest
+  label:
+    - "traefik.enable=true"
+    - "traefik.http.routers.whoami.rule=Host(`whoami.example.com`)"
+  publish:
+    - "8080:80"
