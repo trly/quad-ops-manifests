@@ -1,9 +1,13 @@
-name: whoami
+name: web-app
 type: container
+systemd:
+  description: "Web application container"
+  after: ["network.target"]
+  restart_policy: "always"
 container:
   image: docker.io/traefik/whoami:latest
   label:
     - "traefik.enable=true"
-    - "traefik.http.routers.whoami.rule=Host(`whoami.example.com`)"
+    - "app=whoami"
   publish:
     - "8080:80"
