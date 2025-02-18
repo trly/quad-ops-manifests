@@ -18,7 +18,7 @@ container:
   publish:
     - "8080:80"
   network:
-    - "quad-ops.network"
+    - "quad-ops-demo.network"
   network_mode: bridge
 
 ---
