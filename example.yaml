@@ -2,7 +2,8 @@ name: quad-ops-demo
 type: container
 systemd:
   description: Complete Quad-Ops Demo
-  documentation: https://github.com/trly/quad-ops
+  documentation:
+  - https://github.com/trly/quad-ops
   after: 
     - network-online.target
   before:
