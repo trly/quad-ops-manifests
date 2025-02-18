@@ -7,24 +7,18 @@ systemd:
     - network-online.target
   before:
     - shutdown.target
-  requires:
-    - quad-ops.service
-  wants:
-    - quad-ops.service
-  conflicts:
-    - conflicting.service
   restart_policy: always
   timeout_start_sec: 300
   type: notify
   wanted_by:
     - default.target
-  volume: quad-ops-demo.volume
+  volume: quad-ops-demo.volume:/data
 container:
   image: docker.io/traefik/whoami:latest
   publish:
     - "8080:80"
   network:
-    - "quad-ops"
+    - "quad-ops.network"
   network_mode: bridge
 
 ---
