@@ -16,7 +16,8 @@ container:
 
 systemd:
   description: "PairDrop - A local file sharing solution"
-  documentation: "https://docs.linuxserver.io/images/docker-pairdrop/"
+  documentation:
+  - "https://docs.linuxserver.io/images/docker-pairdrop/"
   restart_policy: "always"
   wanted_by:
     - "default.target"
