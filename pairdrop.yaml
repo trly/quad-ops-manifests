@@ -3,7 +3,7 @@ type: container
 
 container:
   image: lscr.io/linuxserver/pairdrop:latest
-  publish:
+  publish_port:
     - "3000:3000"
   environment:
     PUID: "1000"
