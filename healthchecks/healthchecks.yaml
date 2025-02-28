@@ -1,0 +1,26 @@
+name: healthchecks
+type: container
+systemd:
+  description: Healthchecks is a watchdog for your cron jobs.
+  documentation: https://docs.linuxserver.io/images/docker-healthchecks
+  after: 
+    - network-online.target
+  before:
+    - shutdown.target
+  restart_policy: always
+  timeout_start_sec: 300
+  type: notify
+  wanted_by:
+    - default.target
+  volume: healthchecks-config.volume
+container:
+  image: quay.io/linuxserver.io/healthchecks:3.9.20250224
+  publish:
+    - "8000:8000"
+
+---
+name: healthchecks-config
+type: volume
+volume:
+  label:
+    - "usage=healthchecks-config"
