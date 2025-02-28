@@ -2,7 +2,8 @@ name: healthchecks
 type: container
 systemd:
   description: Healthchecks is a watchdog for your cron jobs.
-  documentation: https://docs.linuxserver.io/images/docker-healthchecks
+  documentation:
+    - https://docs.linuxserver.io/images/docker-healthchecks
   after: 
     - network-online.target
   before:
