@@ -1,10 +1,10 @@
-name: quad-ops-demo
+name: quad-ops-example
 type: container
 systemd:
-  description: Complete Quad-Ops Demo
+  description: quad-ops example manifest
   documentation:
-  - https://github.com/trly/quad-ops
-  after: 
+    - https://github.com/trly/quad-ops
+  after:
     - network-online.target
   before:
     - shutdown.target
@@ -13,22 +13,23 @@ systemd:
   type: notify
   wanted_by:
     - default.target
-  volume: quad-ops-demo.volume:/data
+  volume: quad-ops-example.volume:/data
 container:
-  image: docker.io/traefik/whoami:latest
+  image: quad-ops-demo.image
+  label:
+    - "environment=staging"
   publish:
     - "8080:80"
   network:
-    - "quad-ops-demo.network"
+    - "quad-ops-example.network"
   network_mode: bridge
-
 ---
 name: quad-ops-demo
 type: volume
 volume:
   label:
     - "usage=quad-ops-data"
-
+    - "environment=staging"Z
 ---
 name: quad-ops-demo
 type: network
@@ -36,9 +37,10 @@ network:
   label:
     - "environment=staging"
   driver: bridge
-
 ---
 name: quad-ops-demo
 type: image
 image:
-  image: docker.io/library/alpine:latest
+  label:
+    - "environment=staging"
+  image: docker.io/traefik/whoami:latest
