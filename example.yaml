@@ -29,7 +29,7 @@ type: volume
 volume:
   label:
     - "usage=quad-ops-data"
-    - "environment=staging"Z
+    - "environment=staging"
 ---
 name: quad-ops-demo
 type: network
