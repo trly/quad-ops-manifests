@@ -15,7 +15,7 @@ systemd:
     - default.target
   volume: quad-ops-example.volume:/data
 container:
-  image: quad-ops-demo.image
+  image: quad-ops-example.image
   label:
     - "environment=staging"
   publish:
@@ -24,21 +24,21 @@ container:
     - "quad-ops-example.network"
   network_mode: bridge
 ---
-name: quad-ops-demo
+name: quad-ops-example
 type: volume
 volume:
   label:
     - "usage=quad-ops-data"
     - "environment=staging"
 ---
-name: quad-ops-demo
+name: quad-ops-example
 type: network
 network:
   label:
     - "environment=staging"
   driver: bridge
 ---
-name: quad-ops-demo
+name: quad-ops-example
 type: image
 image:
   label:
